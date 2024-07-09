@@ -25,7 +25,8 @@ def add_propositions(disks, domain_file, n_, pegs):
         domain_file.write(f"empty_{peg} ")
         for disk in disks:
             domain_file.write(f"{disk}_on_{peg} ")
-            domain_file.write(f"{disk}_top ")
+    for disk in disks:
+        domain_file.write(f"{disk}_top ")
     for i in range(n_):
         for j in range(i + 1, n_):
             domain_file.write(f"{disks[i]}_on_{disks[j]} ")
