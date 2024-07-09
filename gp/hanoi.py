@@ -13,6 +13,13 @@ def create_domain_file(domain_file_name, n_, m_):
 
 
 def add_propositions(disks, domain_file, n_, pegs):
+    """
+    Add the propositions of a 'Towers of Hanoi' game to the domain file
+    :param disks: A list of disk names
+    :param domain_file: The domain file
+    :param n_: The number of disks
+    :param pegs: A list of the disks names
+    """
     domain_file.write("Propositions:\n")
     for peg in pegs:
         domain_file.write(f"empty_{peg} ")
@@ -26,6 +33,13 @@ def add_propositions(disks, domain_file, n_, pegs):
 
 
 def add_actions(disks, domain_file, n_, pegs):
+    """
+    Add actions of a 'Towers of Hanoi' game to the domain file
+    :param disks: A list of disk names
+    :param domain_file: The domain file
+    :param n_: The number of disks
+    :param pegs: A list of the disks names
+    """
     domain_file.write("Actions:\n")
     move_between_pegs(disks, domain_file, pegs)
     move_from_peg_to_disk(disks, domain_file, n_, pegs)
@@ -34,7 +48,12 @@ def add_actions(disks, domain_file, n_, pegs):
 
 
 def move_from_disk_to_disk(disks, domain_file, n_):
-    # move disk on top of disk
+    """
+    Adds to the domain file, the action of moving a disk from one disk to another.
+    :param disks: A list of disk names
+    :param domain_file: The domain file
+    :param n_: The number of disks
+    """
     for i in range(n_):
         for j in range(i + 1, n_):
             for k in range(i + 1, n_):
@@ -46,7 +65,13 @@ def move_from_disk_to_disk(disks, domain_file, n_):
 
 
 def move_from_disk_to_peg(disks, domain_file, n_, pegs):
-    # move disk on top empty peg
+    """
+    Adds to the domain file, the action of moving a disk from a disk to an empty peg.
+    :param disks: A list of disk names
+    :param domain_file: The domain file
+    :param n_: The number of disks
+    :param pegs: A list of the disks names
+    """
     for i in range(n_):
         for j in range(i + 1, n_):
             for peg in pegs:
@@ -57,7 +82,13 @@ def move_from_disk_to_peg(disks, domain_file, n_, pegs):
 
 
 def move_from_peg_to_disk(disks, domain_file, n_, pegs):
-    # move disk from empty peg to disk
+    """
+    Adds to the domain file, the action of moving a disk from an empty peg to a disk.
+    :param disks: A list of disk names
+    :param domain_file: The domain file
+    :param n_: The number of disks
+    :param pegs: A list of the disks names
+    """
     for i in range(n_):
         for j in range(i + 1, n_):
             for peg in pegs:
@@ -68,7 +99,13 @@ def move_from_peg_to_disk(disks, domain_file, n_, pegs):
 
 
 def move_between_pegs(disks, domain_file, pegs):
-    # move disk from empty peg to empty peg
+    """
+    Adds to the domain file, the action of moving a disk from an empty peg to another empty peg.
+    :param disks: A list of disk names
+    :param domain_file: The domain file
+    :param pegs: A list of the disks names
+    """
+
     for disk in disks:
         for peg_src in pegs:
             for peg_dest in pegs:
