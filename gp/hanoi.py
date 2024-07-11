@@ -140,6 +140,11 @@ def create_problem_file(problem_file_name_, n_, m_):
     for p in range(m_ - 1):
         problem_file.write(f"empty_{pegs[p]} ")
 
+    # Set all disk on top of the one another (scaling)
+    for i in range(n_ - 1):
+        problem_file.write(f"{disks[i]}_on_{disks[i + 1]} ")
+    problem_file.write(f"{disks[n_ - 1]}_on_{pegs[m_ - 1]} ")
+
     problem_file.close()
 
 
